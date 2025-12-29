@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="cbowen">
+    
+    <title>
+        
+            文件传输 &amp; 同步方式全解析：为什么我最终选择了 rsync |
+        
+        码屿
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/private/favicon.png">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"blog.cbowen.cn","root":"/","language":"en"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"码屿","author":"cbowen","avatar":"/images/private/head.png","logo":"/images/private/bloglogo.png","favicon":"/images/private/favicon.png"},"menu":{"home":"/","Archives":"/archives","Tags":"/tags","tools":"/tools","About":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"心中若有桃花源，何处不是水云间","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/tumble-leap","weixin":"img | ./images/private/WX.jpeg","qq":null,"email":"ischenbowen@outlook.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":true},"home":{"category":true,"tag":true,"announcement":null,"post_datetime":"created"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"omhjooDG9E5RWOpM8AAoAKhC-gzGzoHsz","appkey":"TJhbP2v9Dh4aBqhHANlcHCCu","server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"jsdelivr"},"pjax":{"enable":true},"footer":{"since":2020,"word_count":false,"record":{"enable":true,"list":[{"code":"豫ICP备2024081630号-1","link":"https://beian.miit.gov.cn"}]},"icp":{"enable":true,"record_code":"豫ICP备2024081630号-1","url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"aliyun","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"links":[{"name":"视频解析接口","link":"http://video.xdxxn.cn/","description":"腾讯视频、爱奇艺、优酷、芒果解析"}],"tools":[{"category":"聊天 AI","anchorId":"JUU4JTgxJThBJUU1JUE0JUE5JTIwQUk0"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天工具","image":"/images/tools/gemini.svg"},{"name":"Copilot","link":"https://copilot.microsoft.com/","description":"微软旗下 AI 聊天工具","image":"/images/tools/copilot.png"},{"name":"文心一言","link":"https://yiyan.baidu.com/","description":"百度旗下 AI 聊天工具","image":"/images/tools/wenxinyiyan.png"},{"name":"通义千问","link":"https://tongyi.aliyun.com/qianwen/","description":"阿里旗下 AI 聊天工具","image":"/images/tools/tongyiqianwen.svg"},{"name":"讯飞星火","link":"https://xinghuo.xfyun.cn/","description":"科大讯飞星火认知 AI 大模型","image":"/images/tools/xinghuo.svg"},{"category":"绘图 AI","anchorId":"JUU3JUJCJTk4JUU1JTlCJUJFJTIwQUk7"},{"name":"Microsoft Designer","link":"https://designer.microsoft.com/home","description":"微软推出的在线设计海报和宣传图工具","image":"/images/tools/microsoft-designer.svg"},{"name":"文心一格","link":"https://yige.baidu.com/","description":"百度出品的 AI 绘画工具","image":"/images/tools/wenxinyiyan.png"}]},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/private/bloglogo.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               码屿
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools">
+                                
+                                TOOLS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                ABOUT
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools">
+                            
+                            TOOLS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            ABOUT
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        文件传输 &amp; 同步方式全解析：为什么我最终选择了 rsync
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/private/head.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">cbowen</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-04-22 15:34:22</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Dec 29 2025 12:12:53 GMT+0000">2025-12-29 12:12:53</span>
+                </span>
+            
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>在日常工作或生活中，文件传输与同步是一项基础但常常被低估的重要任务。从几百 KB 的配置文件，到几十 GB 的照片和视频，每个人都需要一套既快速又可靠的解决方案。</p>
+<p>今天这篇文章，我将整理常见的文件传输与同步方式，并重点讲讲为什么我最终选择了 <code>rsync</code> 作为主力工具。</p>
+<hr>
+<h2 id="📱-日常常见：微信-QQ-文件传输"><a href="#📱-日常常见：微信-QQ-文件传输" class="headerlink" title="📱 日常常见：微信 &#x2F; QQ 文件传输"></a>📱 日常常见：微信 &#x2F; QQ 文件传输</h2><p>很多人最熟悉的方式，就是：</p>
+<ul>
+<li>在手机微信里「传输助手」发给自己</li>
+<li>用 QQ「我的设备」同步文件</li>
+</ul>
+<h3 id="✅-优点："><a href="#✅-优点：" class="headerlink" title="✅ 优点："></a>✅ 优点：</h3><ul>
+<li>无需额外安装工具</li>
+<li>操作简单，上手门槛低</li>
+<li>支持跨设备传输（手机 → 电脑）</li>
+</ul>
+<h3 id="❌-缺点："><a href="#❌-缺点：" class="headerlink" title="❌ 缺点："></a>❌ 缺点：</h3><ul>
+<li><strong>压缩严重</strong>：图片、视频默认会被压缩，丢失质量</li>
+<li><strong>大文件受限</strong>：超过 100MB 甚至更小的文件很难传</li>
+<li><strong>断点续传困难</strong>：网络中断就得重新来</li>
+<li><strong>非自动化</strong>：适合手动传，不适合持续同步或备份</li>
+</ul>
+<hr>
+<h2 id="📂-网盘类：百度网盘、阿里云盘、OneDrive、iCloud、Google-Drive"><a href="#📂-网盘类：百度网盘、阿里云盘、OneDrive、iCloud、Google-Drive" class="headerlink" title="📂 网盘类：百度网盘、阿里云盘、OneDrive、iCloud、Google Drive"></a>📂 网盘类：百度网盘、阿里云盘、OneDrive、iCloud、Google Drive</h2><p>云盘是另一种广泛使用的文件同步方案，适合跨设备或跨平台使用。</p>
+<h3 id="✅-优点：-1"><a href="#✅-优点：-1" class="headerlink" title="✅ 优点："></a>✅ 优点：</h3><ul>
+<li>文件在线存储，随时可用</li>
+<li>支持跨设备同步</li>
+<li>某些网盘支持版本历史、协作功能</li>
+</ul>
+<h3 id="❌-缺点：-1"><a href="#❌-缺点：-1" class="headerlink" title="❌ 缺点："></a>❌ 缺点：</h3><ul>
+<li><strong>上传&#x2F;下载限速</strong>（尤其是百度网盘）</li>
+<li><strong>需要登录账号，有平台绑定</strong></li>
+<li><strong>隐私存疑</strong>：服务端可见你的文件</li>
+<li><strong>同步延迟不可控</strong>：非实时、调度不透明</li>
+</ul>
+<hr>
+<h2 id="🔗-局域网直传：LocalSend、Snapdrop、AirDrop"><a href="#🔗-局域网直传：LocalSend、Snapdrop、AirDrop" class="headerlink" title="🔗 局域网直传：LocalSend、Snapdrop、AirDrop"></a>🔗 局域网直传：LocalSend、Snapdrop、AirDrop</h2><p>这些工具适合在<strong>局域网中快速传输文件</strong>：</p>
+<ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://localsend.org/" >LocalSend<i class="fas fa-external-link-alt"></i></a></li>
+<li>Snapdrop（基于 Web 的 AirDrop 替代）</li>
+<li>Apple 的 AirDrop</li>
+</ul>
+<h3 id="✅-优点：-2"><a href="#✅-优点：-2" class="headerlink" title="✅ 优点："></a>✅ 优点：</h3><ul>
+<li>无需登录，跨平台（尤其是 LocalSend）</li>
+<li>点对点传输，<strong>速度快、隐私好</strong></li>
+<li>使用简单，开箱即用</li>
+</ul>
+<h3 id="❌-缺点：-2"><a href="#❌-缺点：-2" class="headerlink" title="❌ 缺点："></a>❌ 缺点：</h3><ul>
+<li>仅限<strong>局域网内使用</strong></li>
+<li><strong>无法自动化或批量同步</strong></li>
+<li>不适合远程传输或长期备份</li>
+</ul>
+<hr>
+<h2 id="🔁-真·同步工具：Syncthing"><a href="#🔁-真·同步工具：Syncthing" class="headerlink" title="🔁 真·同步工具：Syncthing"></a>🔁 真·同步工具：Syncthing</h2><p><a class="link"   target="_blank" rel="noopener" href="https://syncthing.net/" >Syncthing<i class="fas fa-external-link-alt"></i></a> 是一款开源的、点对点的文件同步工具，使用者可以建立多个节点，在不同设备之间实现<strong>持续、自动的同步</strong>。</p>
+<h3 id="✅-优点：-3"><a href="#✅-优点：-3" class="headerlink" title="✅ 优点："></a>✅ 优点：</h3><ul>
+<li>自动同步，实时检测变化</li>
+<li>端对端加密，安全性高</li>
+<li>跨平台，UI 友好，适合新手</li>
+</ul>
+<h3 id="❌-缺点：-3"><a href="#❌-缺点：-3" class="headerlink" title="❌ 缺点："></a>❌ 缺点：</h3><ul>
+<li>对文件冲突处理不够智能</li>
+<li>大量文件变动时性能偏弱</li>
+<li>对局域网更友好，跨网略显复杂</li>
+</ul>
+<hr>
+<h2 id="💪-真正专业的文件传输工具：rsync"><a href="#💪-真正专业的文件传输工具：rsync" class="headerlink" title="💪 真正专业的文件传输工具：rsync"></a>💪 真正专业的文件传输工具：rsync</h2><p>终于来到主角 —— <code>rsync</code></p>
+<p>这是一款非常经典、稳定、强大的文件同步&#x2F;备份工具，适合在各种环境中精确控制文件的同步行为。</p>
+<h3 id="✅-优点：-4"><a href="#✅-优点：-4" class="headerlink" title="✅ 优点："></a>✅ 优点：</h3><ul>
+<li><strong>极高效率</strong>：只同步变更内容（支持增量传输）</li>
+<li><strong>稳定可靠</strong>：可用于服务器间定时同步&#x2F;备份</li>
+<li><strong>可脚本化</strong>：完美融入自动化流程</li>
+<li><strong>跨网络、跨系统支持好</strong></li>
+</ul>
+<h3 id="❌-缺点：-4"><a href="#❌-缺点：-4" class="headerlink" title="❌ 缺点："></a>❌ 缺点：</h3><ul>
+<li>命令行操作为主，有一定学习成本</li>
+<li>不带 UI（不过有前端工具如 Grsync）</li>
+<li>对新手不够友好，但值得掌握</li>
+</ul>
+<h3 id="💡-示例用法："><a href="#💡-示例用法：" class="headerlink" title="💡 示例用法："></a>💡 示例用法：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将本地文件夹同步到远程服务器</span></span><br><span class="line">rsync -avz ./local/ user@remote:/home/user/backup/</span><br><span class="line"><span class="comment"># 本地文件夹之间同步（跳过不变的文件）</span></span><br><span class="line">rsync -a --delete ./source/ ./destination/</span><br><span class="line"><span class="comment"># 带进度条和压缩</span></span><br><span class="line">rsync -avz --progress ./source/ user@remote:/data/</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🧠-总结：选择方案看你的用途"><a href="#🧠-总结：选择方案看你的用途" class="headerlink" title="🧠 总结：选择方案看你的用途"></a>🧠 总结：选择方案看你的用途</h2><table>
+<thead>
+<tr>
+<th>使用场景</th>
+<th>推荐方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>临时、小文件、跨设备手动传</td>
+<td>微信 &#x2F; QQ &#x2F; LocalSend</td>
+</tr>
+<tr>
+<td>云端存储、轻同步</td>
+<td>网盘（阿里云盘优于百度）</td>
+</tr>
+<tr>
+<td>实时局域网同步</td>
+<td>Syncthing</td>
+</tr>
+<tr>
+<td><strong>自动化、远程备份、大文件传输</strong></td>
+<td>✅ <code>rsync</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="✍️-结语"><a href="#✍️-结语" class="headerlink" title="✍️ 结语"></a>✍️ 结语</h2><p>如果你只是偶尔从手机传个图片，那微信就够了。但如果你有大量文件要定期同步、跨设备备份、远程部署 —— 那你<strong>真的需要掌握 rsync</strong>。</p>
+<p>它不像现代工具那样华丽，却稳得可怕，效率惊人，而且能配合 cron、SSH 等组合出任意你想要的传输策略。</p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/05/28/%E7%BA%AF%E7%89%9B%E9%A9%AC%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/"
+                                   title="纯牛马使用说明"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">纯牛马使用说明</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/04/16/yaml_front_matter/"
+                                   title="yaml_front_matter 示例"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">yaml_front_matter 示例</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">Comment plugin failed to load</span>
+    <button class="reload keep-button">Click to reload</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">Loading comment plugin</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: 'omhjooDG9E5RWOpM8AAoAKhC-gzGzoHsz',
+              appKey: 'TJhbP2v9Dh4aBqhHANlcHCCu',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '',
+              lang: 'en'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%B1-%E6%97%A5%E5%B8%B8%E5%B8%B8%E8%A7%81%EF%BC%9A%E5%BE%AE%E4%BF%A1-QQ-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93"><span class="nav-number">1.</span> <span class="nav-text">📱 日常常见：微信 &#x2F; QQ 文件传输</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E4%BC%98%E7%82%B9%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">✅ 优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%8C-%E7%BC%BA%E7%82%B9%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">❌ 缺点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%82-%E7%BD%91%E7%9B%98%E7%B1%BB%EF%BC%9A%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E3%80%81%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E3%80%81OneDrive%E3%80%81iCloud%E3%80%81Google-Drive"><span class="nav-number">2.</span> <span class="nav-text">📂 网盘类：百度网盘、阿里云盘、OneDrive、iCloud、Google Drive</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E4%BC%98%E7%82%B9%EF%BC%9A-1"><span class="nav-number">2.1.</span> <span class="nav-text">✅ 优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%8C-%E7%BC%BA%E7%82%B9%EF%BC%9A-1"><span class="nav-number">2.2.</span> <span class="nav-text">❌ 缺点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%97-%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9B%B4%E4%BC%A0%EF%BC%9ALocalSend%E3%80%81Snapdrop%E3%80%81AirDrop"><span class="nav-number">3.</span> <span class="nav-text">🔗 局域网直传：LocalSend、Snapdrop、AirDrop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E4%BC%98%E7%82%B9%EF%BC%9A-2"><span class="nav-number">3.1.</span> <span class="nav-text">✅ 优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%8C-%E7%BC%BA%E7%82%B9%EF%BC%9A-2"><span class="nav-number">3.2.</span> <span class="nav-text">❌ 缺点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%81-%E7%9C%9F%C2%B7%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7%EF%BC%9ASyncthing"><span class="nav-number">4.</span> <span class="nav-text">🔁 真·同步工具：Syncthing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E4%BC%98%E7%82%B9%EF%BC%9A-3"><span class="nav-number">4.1.</span> <span class="nav-text">✅ 优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%8C-%E7%BC%BA%E7%82%B9%EF%BC%9A-3"><span class="nav-number">4.2.</span> <span class="nav-text">❌ 缺点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%92%AA-%E7%9C%9F%E6%AD%A3%E4%B8%93%E4%B8%9A%E7%9A%84%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%B7%A5%E5%85%B7%EF%BC%9Arsync"><span class="nav-number">5.</span> <span class="nav-text">💪 真正专业的文件传输工具：rsync</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E4%BC%98%E7%82%B9%EF%BC%9A-4"><span class="nav-number">5.1.</span> <span class="nav-text">✅ 优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%8C-%E7%BC%BA%E7%82%B9%EF%BC%9A-4"><span class="nav-number">5.2.</span> <span class="nav-text">❌ 缺点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E7%A4%BA%E4%BE%8B%E7%94%A8%E6%B3%95%EF%BC%9A"><span class="nav-number">5.3.</span> <span class="nav-text">💡 示例用法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%A0-%E6%80%BB%E7%BB%93%EF%BC%9A%E9%80%89%E6%8B%A9%E6%96%B9%E6%A1%88%E7%9C%8B%E4%BD%A0%E7%9A%84%E7%94%A8%E9%80%94"><span class="nav-number">6.</span> <span class="nav-text">🧠 总结：选择方案看你的用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%8D%EF%B8%8F-%E7%BB%93%E8%AF%AD"><span class="nav-number">7.</span> <span class="nav-text">✍️ 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">cbowen</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+        <div class="record-info info-item">
+            
+                
+                    <div class="record-item border-box">
+                        <a class=""
+                           target="_blank"
+                           href="https://beian.miit.gov.cn"
+                        >
+                            豫ICP备2024081630号-1
+                        </a>
+                    </div>
+                
+            
+        </div>
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%B1-%E6%97%A5%E5%B8%B8%E5%B8%B8%E8%A7%81%EF%BC%9A%E5%BE%AE%E4%BF%A1-QQ-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93"><span class="nav-number">1.</span> <span class="nav-text">📱 日常常见：微信 &#x2F; QQ 文件传输</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E4%BC%98%E7%82%B9%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">✅ 优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%8C-%E7%BC%BA%E7%82%B9%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">❌ 缺点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%82-%E7%BD%91%E7%9B%98%E7%B1%BB%EF%BC%9A%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E3%80%81%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E3%80%81OneDrive%E3%80%81iCloud%E3%80%81Google-Drive"><span class="nav-number">2.</span> <span class="nav-text">📂 网盘类：百度网盘、阿里云盘、OneDrive、iCloud、Google Drive</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E4%BC%98%E7%82%B9%EF%BC%9A-1"><span class="nav-number">2.1.</span> <span class="nav-text">✅ 优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%8C-%E7%BC%BA%E7%82%B9%EF%BC%9A-1"><span class="nav-number">2.2.</span> <span class="nav-text">❌ 缺点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%97-%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9B%B4%E4%BC%A0%EF%BC%9ALocalSend%E3%80%81Snapdrop%E3%80%81AirDrop"><span class="nav-number">3.</span> <span class="nav-text">🔗 局域网直传：LocalSend、Snapdrop、AirDrop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E4%BC%98%E7%82%B9%EF%BC%9A-2"><span class="nav-number">3.1.</span> <span class="nav-text">✅ 优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%8C-%E7%BC%BA%E7%82%B9%EF%BC%9A-2"><span class="nav-number">3.2.</span> <span class="nav-text">❌ 缺点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%81-%E7%9C%9F%C2%B7%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7%EF%BC%9ASyncthing"><span class="nav-number">4.</span> <span class="nav-text">🔁 真·同步工具：Syncthing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E4%BC%98%E7%82%B9%EF%BC%9A-3"><span class="nav-number">4.1.</span> <span class="nav-text">✅ 优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%8C-%E7%BC%BA%E7%82%B9%EF%BC%9A-3"><span class="nav-number">4.2.</span> <span class="nav-text">❌ 缺点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%92%AA-%E7%9C%9F%E6%AD%A3%E4%B8%93%E4%B8%9A%E7%9A%84%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%B7%A5%E5%85%B7%EF%BC%9Arsync"><span class="nav-number">5.</span> <span class="nav-text">💪 真正专业的文件传输工具：rsync</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-%E4%BC%98%E7%82%B9%EF%BC%9A-4"><span class="nav-number">5.1.</span> <span class="nav-text">✅ 优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%8C-%E7%BC%BA%E7%82%B9%EF%BC%9A-4"><span class="nav-number">5.2.</span> <span class="nav-text">❌ 缺点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E7%A4%BA%E4%BE%8B%E7%94%A8%E6%B3%95%EF%BC%9A"><span class="nav-number">5.3.</span> <span class="nav-text">💡 示例用法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%A0-%E6%80%BB%E7%BB%93%EF%BC%9A%E9%80%89%E6%8B%A9%E6%96%B9%E6%A1%88%E7%9C%8B%E4%BD%A0%E7%9A%84%E7%94%A8%E9%80%94"><span class="nav-number">6.</span> <span class="nav-text">🧠 总结：选择方案看你的用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%8D%EF%B8%8F-%E7%BB%93%E8%AF%AD"><span class="nav-number">7.</span> <span class="nav-text">✍️ 结语</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>
