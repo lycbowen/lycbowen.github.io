@@ -238,15 +238,15 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2021/08/21/%E8%A7%A3%E5%86%B3Linux%E4%B8%8Badb%E6%8F%90%E7%A4%BAunauthorized/">
+                        <a href="/2021/08/21/arch-adb-unauthorized/">
                             解决Arch Linux下adb提示unauthorized
                         </a>
                     </h3>
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            安装包android-tools, android-udev
-1sudo pacman -S android-tools android-udev
+                            在 Arch Linux 下使用 adb devices 时，如果设备状态显示为 unauthorized，通常表示电脑已经识别到手机，但手机还没有授权当前电脑进行调试。
+安装必要软件包先安装 android-tools 和 android-udev...
                         
                     </div>
 
@@ -265,7 +265,31 @@
         
 
         
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Linux/">Linux</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Arch-Linux/">Arch Linux</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/ADB/">ADB</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Android/">Android</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
@@ -275,7 +299,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/2021/08/21/%E8%A7%A3%E5%86%B3Linux%E4%B8%8Badb%E6%8F%90%E7%A4%BAunauthorized/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2021/08/21/arch-adb-unauthorized/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -289,14 +313,18 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2021/08/21/Python%E8%B0%83%E7%94%A8%E7%B3%BB%E7%BB%9F%E9%80%9A%E7%9F%A5/">
-                            Python调用系统通知
+                        <a href="/2021/08/21/python-system-notify/">
+                            Python 调用系统通知
                         </a>
                     </h3>
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            Windows10实现123from win10toast import ToastNotifiertoast = ToastNotifier()toast.show_toast(title=&quot;This is a title&quot;, ...
+                            系统通知适合用在脚本执行完成、下载结束、定时任务提醒等场景。不同系统的实现方式不一样，Python 可以直接调用第三方库，也可以调用系统命令。
+Windows 10 实现安装 win10toast：
+1pip install win10toast
+
+...
                         
                     </div>
 
@@ -315,7 +343,28 @@
         
 
         
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Python/">Python</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Python/">Python</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%B3%BB%E7%BB%9F%E9%80%9A%E7%9F%A5/">系统通知</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
@@ -325,7 +374,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/2021/08/21/Python%E8%B0%83%E7%94%A8%E7%B3%BB%E7%BB%9F%E9%80%9A%E7%9F%A5/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2021/08/21/python-system-notify/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -339,15 +388,15 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2021/08/21/chromium%E7%BB%A7%E7%BB%AD%E5%90%AF%E7%94%A8%E8%B0%B7%E6%AD%8C%E5%90%8C%E6%AD%A5%E6%9C%8D%E5%8A%A1/">
-                            chromium继续启用谷歌同步服务
+                        <a href="/2021/08/21/chromium-google-sync/">
+                            Chromium 继续启用 Google 同步服务
                         </a>
                     </h3>
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            终端下输入以下内容
-12echo &quot;--oauth2-client-id=77185425430.apps.googleusercontent.com--oauth2-client-secret=OTJgUOQcT7lO7GsGZq2G4I...
+                            Chromium 在部分发行版中默认无法使用 Google 账号同步。原因是 Google 从 2021 年开始限制非 Chrome 浏览器使用部分私有 API，很多发行版维护的 Chromium 包因此移除了相关凭据。
+如果只是想继续同步书签、历史...
                         
                     </div>
 
@@ -366,7 +415,31 @@
         
 
         
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Linux/">Linux</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Chromium/">Chromium</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Google%E5%90%8C%E6%AD%A5/">Google同步</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Linux/">Linux</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
@@ -376,7 +449,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/2021/08/21/chromium%E7%BB%A7%E7%BB%AD%E5%90%AF%E7%94%A8%E8%B0%B7%E6%AD%8C%E5%90%8C%E6%AD%A5%E6%9C%8D%E5%8A%A1/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2021/08/21/chromium-google-sync/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -390,17 +463,16 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2021/08/06/%E8%A7%A3%E5%86%B3ssh%E4%B8%80%E6%AE%B5%E6%97%B6%E9%97%B4%E5%90%8E%E8%87%AA%E5%8A%A8%E6%96%AD%E5%BC%80/">
+                        <a href="/2021/08/06/ssh-keepalive/">
                             解决ssh一段时间后自动断开
                         </a>
                     </h3>
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            从客户端解决通过客户端向服务端ssh间歇发送心跳
-1sudo vim/etc/ssh/ssh_config
-
-12ServerAliveInterval 30 # 每隔30秒向服务端发送一次心跳ServerAliveCountMax 6 # 当连续6...
+                            SSH 长时间空闲后自动断开，通常是因为中间网络设备、服务端配置或客户端配置主动关闭了空闲连接。比较稳的处理方式是开启心跳，让连接定期发送少量数据。
+从客户端解决通过客户端向服务端ssh间歇发送心跳
+1sudo vim /etc/ssh/ssh_co...
                         
                     </div>
 
@@ -433,7 +505,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/ssh/">ssh</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/SSH/">SSH</a></li>
                         
                     
                 </ul>
@@ -447,7 +519,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/2021/08/06/%E8%A7%A3%E5%86%B3ssh%E4%B8%80%E6%AE%B5%E6%97%B6%E9%97%B4%E5%90%8E%E8%87%AA%E5%8A%A8%E6%96%AD%E5%BC%80/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2021/08/06/ssh-keepalive/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -461,7 +533,7 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2021/08/05/systemd/">
+                        <a href="/2021/08/05/systemd-service/">
                             systemd服务
                         </a>
                     </h3>
@@ -469,9 +541,9 @@
                     <div class="home-post-content keep-markdown-body">
                         
                             编写systemd单元文件将单元文件放至&#x2F;etc&#x2F;systemd&#x2F;system文件夹
-1nvim /etc/systemd/system/unit
+1nvim /etc/systemd/system/demo.service
 
-12345678[Unit]Description=service_d...
+12345678[Unit]Description=s...
                         
                     </div>
 
@@ -518,7 +590,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/2021/08/05/systemd/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2021/08/05/systemd-service/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -532,7 +604,7 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2021/03/28/Arch-Linux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
+                        <a href="/2021/03/28/arch-linux-install/">
                             Arch Linux安装教程
                         </a>
                     </h3>
@@ -578,7 +650,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/ArchLinux/">ArchLinux</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Arch-Linux/">Arch Linux</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Linux%E5%AE%89%E8%A3%85/">Linux安装</a></li>
@@ -595,7 +667,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/2021/03/28/Arch-Linux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2021/03/28/arch-linux-install/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -609,7 +681,7 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2021/03/20/Bilibili%E5%B8%B8%E7%94%A8api%E8%AE%B0%E5%BD%95/">
+                        <a href="/2021/03/20/bilibili-api/">
                             Bilibili常用api记录
                         </a>
                     </h3>
@@ -664,7 +736,7 @@ begin_s...
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/bilibili/">bilibili</a></li>
+                            <li class="category-item"><a href="/categories/%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/">开发记录</a></li>
                         
                     
                 </ul>
@@ -675,7 +747,10 @@ begin_s...
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/bilibili/">bilibili</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Bilibili/">Bilibili</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/API/">API</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a></li>
@@ -692,7 +767,7 @@ begin_s...
     </div>
 
     
-        <a class="home-read-more" href="/2021/03/20/Bilibili%E5%B8%B8%E7%94%A8api%E8%AE%B0%E5%BD%95/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2021/03/20/bilibili-api/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -706,7 +781,7 @@ begin_s...
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2021/03/17/Rsync/">
+                        <a href="/2021/03/17/rsync-basics/">
                             简记rsync使用方法
                         </a>
                     </h3>
@@ -763,7 +838,7 @@ begin_s...
     </div>
 
     
-        <a class="home-read-more" href="/2021/03/17/Rsync/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2021/03/17/rsync-basics/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -777,7 +852,7 @@ begin_s...
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2021/03/02/PolybarPush/">
+                        <a href="/2021/03/02/polybar-bilibili-feed/">
                             polybar跑马灯实时推送up最新动态
                         </a>
                     </h3>
@@ -817,7 +892,7 @@ begin_s...
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/bilibili/">bilibili</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Bilibili/">Bilibili</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/polybar/">polybar</a></li>
@@ -837,7 +912,7 @@ begin_s...
     </div>
 
     
-        <a class="home-read-more" href="/2021/03/02/PolybarPush/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2021/03/02/polybar-bilibili-feed/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -851,18 +926,15 @@ begin_s...
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2021/02/28/LinuxPycharm/">
-                            解决linux下新版pycharm等不能输入中文问题
+                        <a href="/2021/02/28/linux-pycharm-chinese-input/">
+                            解决 Linux 下新版 PyCharm 等不能输入中文问题
                         </a>
                     </h3>
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            Linux下使用pycharm，idea等出现不能输入中文pycharm中使用中文不能正常输入，输入三个字母后强制切回英文输入法，只能通过外部复制粘贴或放弃输入中文，直接用英文注释。
-测试环境：Archlinux + ibus
-解决方法：
-
-下载JB...
+                            问题现象PyCharm、IDEA 等 JetBrains 系列 IDE 在 Linux 下有时会出现中文输入异常：输入几个字母后自动切回英文，或者候选框无法正常上屏。最后只能从外部复制粘贴中文，写注释和字符串都很不方便。
+测试环境：Arch Linu...
                         
                     </div>
 
@@ -898,10 +970,10 @@ begin_s...
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Python/">Python</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Pycharm/">Pycharm</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Linux/">Linux</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Linux/">Linux</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/PyCharm/">PyCharm</a></li>
                         
                     
                 </ul>
@@ -915,7 +987,7 @@ begin_s...
     </div>
 
     
-        <a class="home-read-more" href="/2021/02/28/LinuxPycharm/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2021/02/28/linux-pycharm-chinese-input/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 

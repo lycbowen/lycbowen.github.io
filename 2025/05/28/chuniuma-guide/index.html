@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="个人博客">
+    <meta name="author" content="cbowen">
+    
+    <title>
+        
+            纯牛马使用说明 |
+        
+        码屿
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/private/favicon.png">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"blog.cbowen.cn","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"码屿","author":"cbowen","avatar":"/images/private/head.png","logo":"/images/private/bloglogo.png","favicon":"/images/private/favicon.png"},"menu":{"home":"/","Archives":"/archives","Tags":"/tags","tools":"/tools","About":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"心中若有桃花源，何处不是水云间","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/lycbowen","weixin":"img | ./images/private/WX.jpeg","qq":null,"email":"ischenbowen@outlook.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":true},"home":{"category":true,"tag":true,"announcement":null,"post_datetime":"created"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"left"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"omhjooDG9E5RWOpM8AAoAKhC-gzGzoHsz","appkey":"TJhbP2v9Dh4aBqhHANlcHCCu","server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"jsdelivr"},"pjax":{"enable":true},"footer":{"since":2020,"word_count":false,"record":{"enable":true,"list":[{"code":"豫ICP备2024081630号-1","link":"https://beian.miit.gov.cn"}]},"icp":{"enable":true,"record_code":"豫ICP备2024081630号-1","url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"aliyun","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"links":[{"name":"视频解析接口","link":"http://video.xdxxn.cn/","description":"腾讯视频、爱奇艺、优酷、芒果解析"}],"tools":[{"category":"聊天 AI","anchorId":"JUU4JTgxJThBJUU1JUE0JUE5JTIwQUk0"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天工具","image":"/images/tools/gemini.svg"},{"name":"Copilot","link":"https://copilot.microsoft.com/","description":"微软旗下 AI 聊天工具","image":"/images/tools/copilot.png"},{"name":"文心一言","link":"https://yiyan.baidu.com/","description":"百度旗下 AI 聊天工具","image":"/images/tools/wenxinyiyan.png"},{"name":"通义千问","link":"https://tongyi.aliyun.com/qianwen/","description":"阿里旗下 AI 聊天工具","image":"/images/tools/tongyiqianwen.svg"},{"name":"讯飞星火","link":"https://xinghuo.xfyun.cn/","description":"科大讯飞星火认知 AI 大模型","image":"/images/tools/xinghuo.svg"},{"category":"绘图 AI","anchorId":"JUU3JUJCJTk4JUU1JTlCJUJFJTIwQUk7"},{"name":"Microsoft Designer","link":"https://designer.microsoft.com/home","description":"微软推出的在线设计海报和宣传图工具","image":"/images/tools/microsoft-designer.svg"},{"name":"文心一格","link":"https://yige.baidu.com/","description":"百度出品的 AI 绘画工具","image":"/images/tools/wenxinyiyan.png"}]},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/private/bloglogo.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               码屿
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools">
+                                
+                                工具
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools">
+                            
+                            工具
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box encrypt">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        纯牛马使用说明
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/private/head.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">cbowen</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-05-28 19:10:40</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Tue May 19 2026 02:15:36 GMT+0000">2026-05-19 02:15:36</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/">工具教程</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">使用说明</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%86%85%E9%83%A8%E5%B7%A5%E5%85%B7/">内部工具</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>260 字</span>
+            </span>
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                        <div class="post-encrypt-box border-box"
+                             data-secret="6a221520888d057bc3557858727b4ddad0786a2c51662f8363b7b3f7fc9c03ae"
+                             data-iv="ac7f4ebc7e3d94d6a14deea7152c9943"
+                             data-ep="0a34d54f770316dcc8330c98378bf1b8"
+                             data-content="46722b8b59121048ec1ff1c429bafacdd25971acb56638a0107debc821a3df5662d2e1298c0b8168ccae64eec55e13a1d7a2f94cd3418b778723caf686dc15396a3d9e3f5933bd5fe3cf68e53dc66bf042ed61449f2a28994cd972a2b64e2e64a69fddf3cb3eb84028ca70a955155732e382ee01ec990520bf223d619b112ed12728238bf0233651dba6d0986e7d90267025eb7ba3d27075fde4e8aae1fe6bb034a1352625b9dfdee8966f6f5629d8fd7c72a329fda27e6811701187bf1f823102ff3ded38c9465e6f2eaae98c144b32d00bcff94aac78b6c8a66e59b3ab8b0c56f87f6411c47427ed703c0a81ca5e5e7a7f4ccd1e819a99db3cfb6fea39b83757d185d5dcbbf3eaf565f0095896397d6fa9f9307b39ed6ec68eaf5b1fb4ff4ae9c54a6c575b2631bb830b7118d73af5d45ac2c94bc2b0c7564b6e9f2f606464a4f15c6353b3faf0e70ab06f5e9fafecabced0d5a53a280b36edc5b57d3c7333d2afd1cd2d1252e777ed9515948bac591c09ae6b51d101cb9f28a81b4a46504adec96e3a86d7f65a96d8a47673b6815b1af2b77bb8f6c9a0e180699f22441d48b50938a3e5e6794648d5491a5268f3078e86e5f752f21dde3521e97aa3fa3deddd8644c3ab628a02ea83afd8b77940329495c725d6ae738aa57bc3781da0aa11aa6ff4a9096a6fb7a3bd01eb4e920fb891220205542ae6f1a26699ddb268bc89168217800bddc11b99614942570c33a65ceddb011a85c1e58e3749ef65bdeb05f8836035740dd66321141eea90b440338209e2a9936e07048dbb62a5c6ddf492085466d3c3a155fcd43ec302fc4062c83c44565d1546f024db6e991afab955c5bbbd814b42d4eb339b435a7f5fc99c23dd4868748983b0d6f7a57b7f53b7abf9199136e8165044b4909542aeb6aad2b450624ce6f2111854ffea3ada111627b304dfedcac64498b5b69a0466d5627e50243e05fbf6e4f1fda3c5215a9333034d9df7f84036e909b8ea768e01e758a805564f6cd4bc4308e50a0176dc8dd46d4a153922fbe7d357b5a1ad127eeea8c099cb20657f10787d6aa15c5df80dfa34e73704a85d4a87c40d2c1513e45b7b8a8afbd921bbb6fb7e3e9d489768b1ffd676e3912d53e912d5c4e69a8cf70c6d0c978c6094c7c160c5337418ec843d486d3d62607d6308d15a5a8b1f86edae248b05781a039eb879e6a05a92e462b0e87d092b65c6b4e472d3764ad5d69deef5eca2725adcf9645b73e9795f6c9bd749fe01052ad799d7a7f0f80cac346461dcc39597db4c7c2188393c044e36836092399947cfd5bb56210426819216a8d5e82055bd7e2c8cb7a54def6ab9915f3b7a80d4b8af46512fdbf25f11b88b7dd7da4f97197ededba0bd13a09b3c3767a628b1bcb7953540561db93491525e521f026f938f72c3c10bb809e107c0a3fdc0fd1da7923282a976009f4977e66979ee18f1d49ad1e6889fc9c566daf259075f2a5133839070ad1b8a178ddc4eb2b2c32c6cb88280ae656a89641714cbf45fb9a7b912b80c69374db9dbbb2faa163bf5e3c171f1af65748c9984ef812962dd471a723ce5e35dc1200c51cd8289fb82f89fa32d29d56690b273af0b5a719d729f4075c58b64036246c460f0f0abb44eeb228c700d83b3700ca66cb1e7ee90bdac7ec8b34cacb8d58157ff38365b040fd325a852876e421f6047cd581b1beb3e5107fa06a73a203d16703b7fb504d6c2993397910d80dbc6e8bcc95743108927bd5ce37ce5d8275f5dd3bdb1e44c49220eee0065541975619ed6ad9288b2124150b4fa6a46f33a737aa47d7ae103d36b4333c89c3e67954f0f2f9480f6797679f5f9fd751e0266752b4b809c8f161fe8d878eebf6d76c6cbfc2f230c922c3ba222f0eacb8fb31631cfb3bf812b50806d688c6380111e45e973f4a234eac03daa67acfca10d6622a495f8f81fd6ac3e86c27e0ec4e1cefb9b2b22b14b3c41fcaf35c141276bdea3b3bb539918a3184b4a457de42607de2bf1f6b6764fb08769dbfa1540cf5e71ba61eabb22cb7fe528c10df29f828d03cae4608c5c6328b1a7b828d1dbaa0be00d940a2dc0d34752f97c9c8fa7d04a00f52c8bcf1618a88a4905cf3927e159b9335eb0ee7c88bfe76678f8277d2ee53977ab1db701f01b7d650334e377a2f103ebbbb5abc71157345bb20f659f180138afc9619c1423dbc4e5f984eeb7f650a9880d5256d270a4ed5d8f2ea534e2093db54632e2b9cfd4cfabc14cc15c1f9c123fc4c16cbc042c3ac75188a102ac6ea5afdba3abcf44909bde96472955c00700c98fefd8eb2da791126fa019160c0f83e0c2963ec5d5bebd23507093506d61025d787dbee3674a2cf834c7a405685a93dfa14725ff916e2de837422752ebff646762197b6bad595c6ec54c42d7d01a99e88f71d9852405cc6a0e3fa48a3720328fe37bf2fcd5563e2fe9f424857240cd1de432d247482ce540e9243fb5d86fe73fc6d92a097eb54ebdd6556ce77f55b8f5369d94eef7a89bc8a76db4e70f6daa71ff349cf927d48eeabc2479ce8c7a90d38696a9646090119526e490bcda01ebfc55de24799f5388855bf817fc3815768f23e2a33cea4b190ef30fc1ae9fdcfafd7be6b48b7a17526a58f856581fa169c72e2c68f042eb398929e2669e8212256062651785abb512d25592414d7b0a1f7cc39ef4f218e02689b46ee6e6006c4cb97ad28696bf77cc2538c3c8e723d577436ef9b6c5d21ca5cc5ca53ee8911c1440893832d07ac1f3c5aa5d12a27db7b56042fbf8f8cfe26b6b46a62d30069e600bae61090a9dfc8c37047a56ee9cae8ed2fb9082b29dbe1892c01e053d6c545ed6f847c0f09cc895da0ffdf99476c1055268b428ee4d391cc2cc7d3963d790100131f925e25178eabe3d8fb914e20bccfb9e572603f06bd68171cd09fd5fb61be5401f0d9a4cb818d772cd4e2d60ce01c83d37629db30f32eea46f1315aa7bb36626d4131a8eeec41f54e3981c10f9cde46d316c77dbda73866a0dffd7988e7674bcb01fbc178741ca0e7bc37ac7eb08c56b87d5d41df73cb3a766c7e7c3ffb129171d93a2a69895a7dd6e3770d6bda4ad89df62944bbcef8f3a5b2eb9c8ccefa47146d808511eb0dbaecccbf1060ff12975c20e6083f4f51577e025555283708802b5ad4c097cba749ec0e3c9ce52e1c7e3d974dba531caac33692b1dec7710452e33931ed097359056d8525e184b8d2c2d52ae044993f9de85ef0aeacb4884fce8c6d081e39265607416c9d479453b50a5c44eaca1df680911ad6c0f7cfa16aeb2ca51dd9acb6db03c41db36e9c03cee715beceeff3d47d5c10279e29d2576d5d1f5e414f87e1685abecd7221383cb4993eb389c03668565fe07a872d1247ddf94b21e81245f3bf0510d6803a63165af110f87b1607ae05376b0e9d01712773974968362cf3122ca32c84b989bbfa5800be7d3514c7a9a707946515f3883e67cec9a8747d27c6ca9088296d94bad160c7a141141161975acd9270266ab1cb9ce06ce646a7cbf73988a338b7d8d3ee5135d70ce316aca4ef3f275619578836a4c1e5065c21e13ceced74bbfdde420d88aea7b0fbd491df504ea547ee9deb3328230f5276a49b811cc6b1cf4a5fa6b2215e6f8248b30f2cdad9384fd9588d197d4b9cc4cfef3a150d9984a537303cea53630f3fac75a8ed7d5c956ba44dbc64d21db0e77a9701fcb8b0dedd66fb576e44106d586d7933e29c4cabc63818126bb8f58c7b13d5d7cf493ccd172800d05dae33fed6eb84fb0921e0a87772190204b7f8c8c365102d9ea95bab135ee33bbc335e090d063342f532cfadb3b8306f32f75820d9ecef5ca472066a6d705eb928af02fc362ca30e9914b1f33e52bf6e49dea29afe0d0c0ac4773dd22e6aaa24860495d362c40b81baee08d1cc35d8108dfb6a6fd718f17fb17c3a6b8830ad5a44fc21285f7757143e4c72b7fba6936ba4fc50c33a3bcf7507db163a4de08259481462d319556d77f2c6cdca1dd04e292feb831314b1857e8314b535f2b97aabf52c62dc00e1a4a14fef2257740f849650b8eb3d6d43e865b3844b2771a5a6de1c2091133725ccf7f7d2349dbd0221eb363ce168bb0d4f60d6c8306d7235ac68b6d68b1a406871e95e1fb681544c6a1bb84b88e99dde939163bf763bca12463f521a44b5e617eece6dcbfb82648f345ec4aeef499d3702ec6bb0a515b41ec51221b53275f8aa86664994cfbe29dfc98e24882de22456bcf5fd25670d6875eb551a0b02013d93f8d0ed9f9e00f46d5acf6bb1e78cca935cb3a6fc04e2fc3dd68598e5e0f202d991eef44fa5c5d86609ae28790aab04a3bea124912d10f16107593d915991ce57d30ea744f0d0f93b7492e89f05c4e0c56d76322321f06f699de16bdcbc565023a271de12492b68656a9978b2a7f52f86c99fde63ce2d501c77ed243fad9b06e35c83bc04f4b70d516ce2c6509ff7ae2c08ba2b05fb00fe3d6ec92982a5bdba580323fe91a526a22f2f690fc8fe6691236c7f169aea7a2a0006f32fa23e43bc3d2b0524d7d92de1e9bbf0c67b22c3ebed5fb1eb9e341d71f1d7e3c14d66fb514950c0f54b9989bb364742272ad681b832b73744d0500ff16371a6ca09e3ce92ca6fb3c8546b4bf6823d4ff7cdbc4e6d79d80d1989937db32c81b7ead81c068dd4910bdea783c26436fb133be70d267c1ed4a4ed8d97249b880522a37a278a8b4926203ae4bda9513c1103c4e4ba272b0a13cb9473ecb6212b7860e9cea3be2e5221cae981678c39bb2a2de22542050ca504dc500154f72b041585afe2ff0d70905c4f6adc3ce2c4af19ec40d954a6ce7aae92f4048314217711cf72dc7034df9f8f9c8cebf4cf35ac6ab1e79f8b8a929b4d3638bd7c4ae90f249177c5ef94ca50b4a39e48ecaa449bb88c91ce6d86d59a6ba5a1d5fff96444d019f6d02c209a0fd21f539ec08ca19f1b2d5be837b557cc32c5fc754d07f1659dfa0c816b08f9c4570fa04172e258624c0caf2ff756b402420e44b8443227f82574baa8f50e5930f997e94227b8ed146a60969668cf54685b81be83069eefb6bb40f5f55c4e947cfe389da44066ecafb18337d17f7b70e34d5db90662285027748"
+                        >
+                            <input type="password" class="password-input border-box" placeholder="请输入密码...">
+                        </div>
+                        <div class="post"></div>
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">使用说明</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%86%85%E9%83%A8%E5%B7%A5%E5%85%B7/">内部工具</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/04/22/file-sync-rsync/"
+                                   title="文件传输 &amp; 同步方式全解析：为什么我最终选择了 rsync"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">文件传输 &amp; 同步方式全解析：为什么我最终选择了 rsync</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: 'omhjooDG9E5RWOpM8AAoAKhC-gzGzoHsz',
+              appKey: 'TJhbP2v9Dh4aBqhHANlcHCCu',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '',
+              lang: 'zh-CN'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">使用说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%BF%80%E6%B4%BB"><span class="nav-number">1.1.</span> <span class="nav-text">一、激活</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AF%BC%E5%85%A5%E7%8F%AD%E7%BA%A7"><span class="nav-number">1.2.</span> <span class="nav-text">二、导入班级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AF%BC%E5%85%A5%E5%AD%A6%E7%94%9F"><span class="nav-number">1.3.</span> <span class="nav-text">三、导入学生</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81TODO"><span class="nav-number">1.4.</span> <span class="nav-text">四、TODO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%AF%BE%E5%90%8E%E5%8F%8D%E9%A6%88"><span class="nav-number">1.5.</span> <span class="nav-text">五、课后反馈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%B8%B8%E7%94%A8%E8%AF%AD"><span class="nav-number">1.6.</span> <span class="nav-text">六、常用语</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">cbowen</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+        <div class="record-info info-item">
+            
+                
+                    <div class="record-item border-box">
+                        <a class=""
+                           target="_blank"
+                           href="https://beian.miit.gov.cn"
+                        >
+                            豫ICP备2024081630号-1
+                        </a>
+                    </div>
+                
+            
+        </div>
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+            <li class="status-item flex-center post-lock border-box"
+                data-tooltip-content="重新加密"
+            >
+                <i class="fa-solid fa-lock"></i>
+                <i class="fa-solid fa-lock-open"></i>
+            </li>
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">使用说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%BF%80%E6%B4%BB"><span class="nav-number">1.1.</span> <span class="nav-text">一、激活</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AF%BC%E5%85%A5%E7%8F%AD%E7%BA%A7"><span class="nav-number">1.2.</span> <span class="nav-text">二、导入班级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AF%BC%E5%85%A5%E5%AD%A6%E7%94%9F"><span class="nav-number">1.3.</span> <span class="nav-text">三、导入学生</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81TODO"><span class="nav-number">1.4.</span> <span class="nav-text">四、TODO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%AF%BE%E5%90%8E%E5%8F%8D%E9%A6%88"><span class="nav-number">1.5.</span> <span class="nav-text">五、课后反馈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%B8%B8%E7%94%A8%E8%AF%AD"><span class="nav-number">1.6.</span> <span class="nav-text">六、常用语</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"></script>
+
+    <script data-pjax>
+      if (window.mermaid) {
+        mermaid.init()
+      }
+    </script>
+
+
+
+
+
+
+<!-- pjax -->
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>
